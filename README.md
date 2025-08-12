@@ -1,20 +1,20 @@
-#README — lucy-decimal
-Project Overview
+# README — lucy-decimal
+## Project Overview
 lucy-decimal is a Go library aimed at providing precise and robust decimal arithmetic support—ideal for financial, scientific, or any high-precision calculations.
 
-#Features
+## Features
 - High-precision decimal operations: addition, subtraction, multiplication, division.
 - Configurable rounding strategies.
 - Seamless integration with Go’s big and math/big standards (if applicable).
 - Fluent API for chaining operations (optional description).
 
-#Installation
+## Installation
 
 ```bash
 go get github.com/Lucy-Teknologi/lucy-decimal
 ```
 
-#Usage
+## Usage
 
 ```go
 package main
@@ -43,3 +43,4 @@ func main() {
 }
 ```
 (Adjust constructor names, options, and rounding methods to match the actual API.)
+
