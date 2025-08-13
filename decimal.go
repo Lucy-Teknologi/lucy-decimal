@@ -14,7 +14,7 @@
 //	}
 //
 // Note: This can "only" represent numbers with a maximum of 2^31 digits after the decimal point.
-package lucy_decimal
+package decimal
 
 import (
 	"database/sql/driver"

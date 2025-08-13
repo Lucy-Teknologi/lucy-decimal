@@ -1,13 +1,9 @@
 package decimal
 
-import (
-	"fmt"
-
-	lucy_decimal "github.com/Lucy-Teknologi/lucy-decimal"
-)
+import "fmt"
 
 var (
-	Zero     = "0"
+	zero     = "0"
 	One      = "1"
 	Ten      = "10"
 	Hundred  = "100"
@@ -18,20 +14,20 @@ var (
 )
 
 func IsZero(value string) bool {
-	return value == Zero
+	return value == zero
 }
 
 func ParseAny(value any) (string, error) {
 	if value == nil {
-		return Zero, nil
+		return zero, nil
 	}
 	switch v := value.(type) {
 	case string:
 		return v, nil
 	case int:
-		return lucy_decimal.NewFromInt(int64(v)).String(), nil
+		return NewFromInt(int64(v)).String(), nil
 	case float64:
-		return lucy_decimal.NewFromFloat(v).String(), nil
+		return NewFromFloat(v).String(), nil
 	default:
 		return "", fmt.Errorf("unsupported type: %T", v)
 	}

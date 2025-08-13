@@ -1,4 +1,4 @@
-package lucy_decimal
+package decimal
 
 import (
 	"strings"
