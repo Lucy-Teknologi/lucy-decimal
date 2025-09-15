@@ -25,22 +25,29 @@ import (
 )
 
 func main() {
-  a := lucy_decimal.New("123.45")
-  b := lucy_decimal.New("6.789")
+	price, err := decimal.NewFromString("136.02")
+	if err != nil {
+		panic(err)
+	}
 
-  sum := a.Add(b)
-  diff := a.Sub(b)
-  prod := a.Mul(b)
-  quot, err := a.Div(b, lucy_decimal.WithPrecision(10), lucy_decimal.WithRounding(lucy_decimal.RoundHalfUp))
-  if err != nil {
-    // handle error
-  }
+	quantity := decimal.NewFromInt(3)
 
-  fmt.Println("Sum:     ", sum)
-  fmt.Println("Diff:    ", diff)
-  fmt.Println("Product: ", prod)
-  fmt.Println("Quotient:", quot)
+	fee, _ := decimal.NewFromString(".035")
+	taxRate, _ := decimal.NewFromString(".08875")
+
+	subtotal := price.Mul(quantity)
+
+	preTax := subtotal.Mul(fee.Add(decimal.NewFromFloat(1)))
+
+	total := preTax.Mul(taxRate.Add(decimal.NewFromFloat(1)))
+
+	fmt.Println("Subtotal:", subtotal)                      // Subtotal: 408.06
+	fmt.Println("Pre-tax:", preTax)                         // Pre-tax: 422.3421
+	fmt.Println("Taxes:", total.Sub(preTax))                // Taxes: 37.482861375
+	fmt.Println("Total:", total)                            // Total: 459.824961375
+	fmt.Println("Tax rate:", total.Sub(preTax).Div(preTax)) // Tax rate: 0.08875
 }
 ```
 (Adjust constructor names, options, and rounding methods to match the actual API.)
+
 
