@@ -1,17 +1,19 @@
-package decimal
+package decimal_util
 
-func ParseString(value string) (Decimal, error) {
-	return NewFromString(value)
+import "github.com/shopspring/decimal"
+
+func ParseString(value string) (decimal.Decimal, error) {
+	return decimal.NewFromString(value)
 }
 
-func ParseTwoString(value1, value2 string) (Decimal, Decimal, error) {
-	dec1, err := NewFromString(value1)
+func ParseTwoString(value1, value2 string) (decimal.Decimal, decimal.Decimal, error) {
+	dec1, err := decimal.NewFromString(value1)
 	if err != nil {
-		return Decimal{}, Decimal{}, err
+		return decimal.Decimal{}, decimal.Decimal{}, err
 	}
-	dec2, err := NewFromString(value2)
+	dec2, err := decimal.NewFromString(value2)
 	if err != nil {
-		return Decimal{}, Decimal{}, err
+		return decimal.Decimal{}, decimal.Decimal{}, err
 	}
 	return dec1, dec2, nil
 }

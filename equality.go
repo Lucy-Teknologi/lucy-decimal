@@ -1,4 +1,4 @@
-package decimal
+package decimal_util
 
 func Equal(a, b string) (bool, error) {
 	aDec, bDec, err := ParseTwoString(a, b)

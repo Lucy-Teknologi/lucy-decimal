@@ -1,6 +1,10 @@
-package decimal
+package decimal_util
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/shopspring/decimal"
+)
 
 var (
 	zero     = "0"
@@ -25,9 +29,9 @@ func ParseAny(value any) (string, error) {
 	case string:
 		return v, nil
 	case int:
-		return NewFromInt(int64(v)).String(), nil
+		return decimal.NewFromInt(int64(v)).String(), nil
 	case float64:
-		return NewFromFloat(v).String(), nil
+		return decimal.NewFromFloat(v).String(), nil
 	default:
 		return "", fmt.Errorf("unsupported type: %T", v)
 	}

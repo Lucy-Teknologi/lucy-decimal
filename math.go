@@ -1,4 +1,4 @@
-package decimal
+package decimal_util
 
 import (
 	"fmt"
