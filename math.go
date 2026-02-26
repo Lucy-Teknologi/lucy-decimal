@@ -30,3 +30,24 @@ func Negate(value string) (string, error) {
 	result := dec.Neg()
 	return result.String(), nil
 }
+
+func Multiply(a, b string) (string, error) {
+	aDec, bDec, err := ParseTwoString(a, b)
+	if err != nil {
+		return "", err
+	}
+	result := aDec.Mul(bDec)
+	return result.String(), nil
+}
+
+func Divide(a, b string) (string, error) {
+	aDec, bDec, err := ParseTwoString(a, b)
+	if err != nil {
+		return "", err
+	}
+	if bDec.IsZero() {
+		return "", fmt.Errorf("division by zero")
+	}
+	result := aDec.Div(bDec)
+	return result.String(), nil
+}
